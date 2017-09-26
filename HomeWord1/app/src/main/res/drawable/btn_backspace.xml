@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <stroke android:color="#1e1e1e"/>
+    <solid android:color="#ff6864"></solid>
+    <size android:height="@dimen/Radius_btn"
+        android:width="@dimen/Radius_btn"/>
+
+</shape>
