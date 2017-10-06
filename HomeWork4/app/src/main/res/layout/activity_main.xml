@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context="com.example.vanph.homework4.MainActivity">
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="60dp"-->
+        <!--android:orientation="vertical"-->
+        <!--android:paddingLeft="5dp"-->
+        <!--android:paddingRight="5dp"-->
+        <!--android:layout_gravity="right">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_display"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="60dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:textSize="50dp"-->
+            <!--android:fontFamily="sans-serif-smallcaps"-->
+            <!--/>-->
+    <!--</LinearLayout>-->
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right">
+    <EditText
+        android:id="@+id/et_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:selectAllOnFocus="false"
+        android:backgroundTint="@android:color/transparent"
+        android:textSize="50dp"
+        android:padding="5dp"
+        android:background="@color/colorPrimary"/>
+</LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+       >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+           >
+
+            <Button
+                android:id="@+id/btn_7"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="7"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_8"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="8"
+                android:textColor="@color/colorNumber"
+
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_9"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_marginLeft="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="9"
+                android:textColor="@color/colorNumber"
+
+                android:textSize="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_row">
+
+            <Button
+                android:id="@+id/btn_4"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="4"
+                android:textColor="@color/colorNumber"
+
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_5"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="5"
+                android:textColor="@color/colorNumber"
+
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_6"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="6"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_row"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btn_1"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="1"
+                android:textColor="@color/colorNumber"
+
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_2"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="2"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_3"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="3"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_row"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/btn_sao"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="*"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_0"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="0"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+
+            <Button
+                android:id="@+id/btn_thang"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_col"
+                android:background="@drawable/btn_number"
+                android:fontFamily="sans-serif-smallcaps"
+                android:onClick="onClickNumBer"
+                android:text="#"
+                android:textColor="@color/colorNumber"
+                android:textSize="40dp" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_row"
+
+            >
+            <ImageView
+                android:id="@+id/btn_goi"
+                android:layout_width="@dimen/Radius_btn"
+                android:layout_height="@dimen/Radius_btn"
+                android:src="@drawable/ic_call_white_24dp"
+                android:background="@drawable/btn_call"
+                android:layout_marginLeft="95dp"
+
+                />
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
