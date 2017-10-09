@@ -238,7 +238,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin_row"
-
             >
             <ImageView
                 android:id="@+id/btn_goi"
@@ -248,7 +247,6 @@
                 android:background="@drawable/btn_call"
                 android:layout_marginLeft="95dp"
                 android:padding="15dp"
-
                 />
 
 
