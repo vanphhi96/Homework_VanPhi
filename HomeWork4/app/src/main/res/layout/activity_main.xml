@@ -247,6 +247,7 @@
                 android:src="@drawable/ic_call_white_24dp"
                 android:background="@drawable/btn_call"
                 android:layout_marginLeft="95dp"
+                android:padding="15dp"
 
                 />
 

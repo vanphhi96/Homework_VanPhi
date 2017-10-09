@@ -263,8 +263,8 @@
                     android:layout_height="146dp"
                     android:background="@drawable/btn_bang"
                     android:text="="
-                    android:textSize="@dimen/text_size"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="40dp"
+                    android:textColor="@color/colorPrimary"
                     />
             </LinearLayout>
         </LinearLayout>
