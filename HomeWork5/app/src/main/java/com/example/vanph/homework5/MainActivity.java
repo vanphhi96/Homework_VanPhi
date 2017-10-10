@@ -27,6 +27,12 @@ public class MainActivity extends AppCompatActivity {
         addListtenners();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        LoadView();
+    }
+
     public void setupUI()
     {
         addNew = (FloatingActionButton) findViewById(R.id.btn_add);
