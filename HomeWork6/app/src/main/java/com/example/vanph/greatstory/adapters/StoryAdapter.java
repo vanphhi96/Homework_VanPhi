@@ -62,7 +62,7 @@ public class StoryAdapter extends ArrayAdapter<StoryModel>{
             view.setBackgroundColor(Color.rgb(255,204,0));
         }
         else{
-            view.setBackgroundColor(Color.WHITE);
+            view.setBackgroundColor(Color.rgb(81,213,106));
         }
         return convertView;
     }
