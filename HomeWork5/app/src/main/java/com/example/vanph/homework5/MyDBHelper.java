@@ -26,7 +26,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
     public static final String TABLE_NAME = "tbl_note";
     public static final String COL_TITLE= "title";
     public static final String COL_description = "description";
-    private static final String STRING_CREATE = "CREATE TABLE "+TABLE_NAME+" (id INTEGER PRIMARY KEY, "
+    private static final String STRING_CREATE = "CREATE TABLE "+TABLE_NAME+" (id INTEGER PRIMARY KEY AUTOINCREMENT, "
             +COL_TITLE+" TEXT, "+COL_description+" TEXT);";
     private  Context context;
 
@@ -82,15 +82,19 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
 
         ContentValues values = new ContentValues();
-        values.put("id",getID());
+       // values.put("id",getID());
         values.put(COL_TITLE, note.getTitle());
         values.put(COL_description, note.getDescription());
         Log.d(TAG,"addNote"+note.getTitle()+" id= "+ getID());
         this.getWritableDatabase().insert(TABLE_NAME, null, values);
     }
-   public void deleteNote()
+    public void Update(NoteModel note)
+    {
+        this.getWritableDatabase().execSQL("UPDATE "+TABLE_NAME+" SET "+COL_TITLE+ " = '"+note.getTitle()+"', "+COL_description+" = '"+note.getDescription()+"' WHERE id = "+note.getId());
+    }
+   public void deleteNote(int id)
    {
-       this.getWritableDatabase().execSQL("DELETE FROM tbl_note");
+       this.getWritableDatabase().execSQL("DELETE FROM tbl_note WHERE id = "+id);
    }
 
 

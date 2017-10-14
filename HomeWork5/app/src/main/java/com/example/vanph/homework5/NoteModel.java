@@ -1,10 +1,12 @@
 package com.example.vanph.homework5;
 
+import java.io.Serializable;
+
 /**
  * Created by vanph on 09/10/2017.
  */
 
-public class NoteModel {
+public class NoteModel implements Serializable {
     private String title;
     private String description;
     private int id;
