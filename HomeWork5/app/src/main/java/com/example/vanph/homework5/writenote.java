@@ -90,7 +90,7 @@ public void setClickDelete()
     if(noteModel!=null)
     {
         AlertDialog.Builder altdial = new AlertDialog.Builder(this);
-        altdial.setMessage("Do you want note?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        altdial.setMessage("Do you want delete note?").setCancelable(false).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 myDBHelper.deleteNote(noteModel.getId());
