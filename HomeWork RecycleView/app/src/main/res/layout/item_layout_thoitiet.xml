@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="130dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp">
+    <ImageView
+        android:id="@+id/iv_tinhtrang"
+        android:layout_width="100dp"
+        android:layout_height="140dp"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:id="@+id/tv_ngay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ngày"
+        android:layout_toRightOf="@id/iv_tinhtrang"
+        android:textSize="16sp"
+        android:textColor="@color/colorPrimary"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"/>
+    <TextView
+        android:id="@+id/tv_nhietdo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nhiệt độ: "
+        android:layout_toRightOf="@id/iv_tinhtrang"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
+        android:textSize="16sp"
+        android:layout_below="@id/tv_ngay"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_mota"
+        android:text="Độ ẩm: "
+        android:layout_below="@id/tv_nhietdo"
+        android:layout_toRightOf="@id/iv_tinhtrang"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
+        android:textSize="16sp"
+
+        />
+    <TextView
+        android:id="@+id/tv_doam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_mota"
+        android:layout_toRightOf="@id/iv_tinhtrang"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="6dp"
+        android:text="Gió: "
+        android:textSize="16sp"/>
+</RelativeLayout>
