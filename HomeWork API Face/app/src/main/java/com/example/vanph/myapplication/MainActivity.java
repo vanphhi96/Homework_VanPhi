@@ -2,10 +2,15 @@ package com.example.vanph.myapplication;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.nfc.Tag;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,12 +35,8 @@ import com.squareup.picasso.Picasso;
 
 import org.json.JSONObject;
 
-import java.util.Arrays;
-import java.util.List;
-
-import jp.wasabeef.picasso.transformations.CropCircleTransformation;
-
-import static android.widget.Toast.LENGTH_SHORT;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,16 +48,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
+//        FacebookSdk.sdkInitialize(getApplicationContext());
         callbackManager = CallbackManager.Factory.create();
         setContentView(R.layout.activity_main);
 
-        loginButton =(LoginButton)findViewById(R.id.login_button);
-        loginButton.setReadPermissions( Arrays.asList("public_profile","email"));
-        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//        loginButton =(LoginButton)findViewById(R.id.login_button);
+//        loginButton.setReadPermissions( Arrays.asList("public_profile","email"));
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("com.example.vanph.myapplication",
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String sign=Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                Log.d("MY KEY HASH:", sign);
+                Toast.makeText(getApplicationContext(),sign,         Toast.LENGTH_LONG).show();
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+        } catch (NoSuchAlgorithmException e) {
+        }
+
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
 
             @Override
             public void onSuccess(LoginResult loginResult) {
+                Log.d(TAG, "onSuccess: ");
                 Toast.makeText(MainActivity.this, "login ok", Toast.LENGTH_SHORT).show();
                 GraphRequest graphRequest = GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                     @Override
@@ -72,12 +89,12 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-
+                Log.d(TAG, "onCancel: ");
             }
 
             @Override
             public void onError(FacebookException error) {
-
+                Log.d(TAG, "onError: " + error.toString());
             }
         });
 
