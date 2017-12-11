@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#f48ed4">
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:id="@+id/iv_songdow"
+        android:src="@drawable/mp3_file_icon"
+        android:scaleType="centerCrop"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Song"
+        android:layout_toEndOf="@id/iv_songdow"
+        android:layout_alignTop="@id/iv_songdow"
+        android:textSize="16sp"
+        android:textColor="#fff"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:id="@+id/tv_songdow"
+        android:layout_marginEnd="8dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="singer"
+        android:layout_toEndOf="@id/iv_songdow"
+        android:layout_below="@id/tv_songdow"
+        android:textColor="#96ffffff"
+        android:id="@+id/tv_singerdow"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="4dp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        />
+
+</RelativeLayout>

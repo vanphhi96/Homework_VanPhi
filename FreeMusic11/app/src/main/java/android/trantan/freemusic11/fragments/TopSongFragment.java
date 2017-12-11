@@ -91,7 +91,6 @@ public class TopSongFragment extends Fragment {
 //                topSongAdapter.notifyDataSetChanged();
                 Log.d(TAG,"onResponse"+response.body().feed.entry.size());
             }
-
             @Override
             public void onFailure(Call<TopSongResponseJSON> call, Throwable t) {
                 Toast.makeText(getContext(),"No connection",Toast.LENGTH_LONG).show();

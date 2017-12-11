@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.trantan.freemusic11.R;
 import android.trantan.freemusic11.database.TopSongModel;
+import android.trantan.freemusic11.event.OnClickTopSongEvent;
+import android.trantan.freemusic11.notification.MusicNotification;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -50,19 +54,27 @@ public class TopSongAdapter extends RecyclerView.Adapter<TopSongAdapter.TopSongV
         ImageView imageView;
         TextView tv_song;
         TextView tv_singer;
-
+        View view;
         public TopSongViewHolder(View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.iv_song);
             tv_song = itemView.findViewById(R.id.tv_song);
             tv_singer = itemView.findViewById(R.id.tv_singer);
+            view = itemView;
 
         }
-        public void setData(TopSongModel topSongModel)
+        public void setData(final TopSongModel topSongModel)
         {
             Picasso.with(context).load(topSongModel.smallImage).transform(new CropCircleTransformation()).into(imageView);
             tv_song.setText(topSongModel.song);
             tv_singer.setText(topSongModel.singer);
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    EventBus.getDefault().postSticky(new OnClickTopSongEvent(topSongModel));
+
+                }
+            });
         }
     }
 

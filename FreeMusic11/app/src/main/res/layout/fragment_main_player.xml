@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CE93D8">
+    android:background="#CE93D8"
+    android:clickable="true">
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline"
@@ -68,7 +69,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_arrow_back_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="VectorDrawableCompat"
+        android:padding="4dp"/>
 
     <ImageView
         android:id="@+id/iv_dowload"
@@ -82,8 +84,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_file_download_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
+        app:srcCompat="@drawable/ic_file_download24dp"
+        tools:ignore="VectorDrawableCompat"
+        android:padding="4dp"/>
 
     <TextView
         android:id="@+id/tv_song"
@@ -97,16 +100,17 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintStart_toEndOf="@+id/iv_back"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:clickable="true"/>
 
     <TextView
-        android:id="@+id/tv_a"
+        android:id="@+id/tv_singer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:text="Artist"
+        android:text="Singger"
         android:textColor="#aaffffff"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/iv_dowload"
@@ -146,20 +150,21 @@
         tools:ignore="VectorDrawableCompat"
         android:padding="16dp"/>
 
-    <ImageView
-        android:id="@+id/iv_play"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fb_main"
+        android:layout_width="88dp"
+        android:layout_height="108dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/iv_next"
-        app:layout_constraintStart_toEndOf="@+id/iv_previous"
+        app:layout_constraintEnd_toStartOf="@+id/guideline6"
+        app:layout_constraintStart_toStartOf="@+id/guideline5"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:srcCompat="@drawable/ic_play_arrow_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
+        tools:ignore="MissingConstraints"
+        app:srcCompat="@drawable/ic_play_arrow_black_24dp"/>
+
 
     <SeekBar
         android:id="@+id/sb_timeline"
@@ -208,8 +213,10 @@
         android:id="@+id/iv_image_song"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
