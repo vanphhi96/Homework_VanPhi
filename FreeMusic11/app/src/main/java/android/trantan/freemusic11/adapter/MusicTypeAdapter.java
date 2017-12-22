@@ -32,7 +32,6 @@ public class MusicTypeAdapter extends RecyclerView.Adapter<MusicTypeAdapter.Musi
         this.musicTypeModelList = musicTypeModelList;
         this.context = context;
     }
-
     //creat view
     @Override
     public MusicTypeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

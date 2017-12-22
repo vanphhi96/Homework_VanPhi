@@ -1,6 +1,7 @@
 package android.trantan.freemusic11.fragments;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -8,9 +9,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.trantan.freemusic11.adapter.DatabaseHandler;
 import android.trantan.freemusic11.adapter.TopSongAdapter;
 import android.trantan.freemusic11.database.MusicTypeModel;
 import android.trantan.freemusic11.database.TopSongModel;
+import android.trantan.freemusic11.event.OnUpdateRvFav;
 import android.trantan.freemusic11.event.OnclickMusicTypeEvent;
 import android.trantan.freemusic11.networks.MusicInterface;
 import android.trantan.freemusic11.networks.RetrofitInstance;
@@ -55,7 +58,7 @@ public class TopSongFragment extends Fragment {
     MusicTypeModel musicTypeModel;
     AppBarLayout appBarLayout;
     TopSongAdapter topSongAdapter;
-    private List<TopSongModel> topSongModelList = new ArrayList<>();
+    public static List<TopSongModel> topSongModelList = new ArrayList<>();
     AVLoadingIndicatorView avload;
     public TopSongFragment() {
         // Required empty public constructor
@@ -97,7 +100,6 @@ public class TopSongFragment extends Fragment {
             }
         });
     }
-
     @Subscribe(sticky = true)
     public void OnReceicedOnMusicTypeClicked(OnclickMusicTypeEvent onclickMusicTypeEvent){
             musicTypeModel = onclickMusicTypeEvent.musicTypeModel;
@@ -120,7 +122,6 @@ public class TopSongFragment extends Fragment {
         });
         tv_musict_type.setText(musicTypeModel.key);
         Picasso.with(getContext()).load(musicTypeModel.imageID).into(iv_music_type);
-
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
@@ -132,6 +133,25 @@ public class TopSongFragment extends Fragment {
                 else{
                     toolbar.setBackground(null);
                 }
+            }
+        });
+        if(musicTypeModel.isFavourite){
+            iv_favorites.setColorFilter(Color.RED);
+        }
+        else {
+            iv_favorites.setColorFilter(Color.WHITE);
+        }
+        iv_favorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatabaseHandler.updateFavourite(musicTypeModel);
+                if(musicTypeModel.isFavourite){
+                    iv_favorites.setColorFilter(Color.RED);
+                }
+                else {
+                    iv_favorites.setColorFilter(Color.WHITE);
+                }
+                EventBus.getDefault().postSticky(new OnUpdateRvFav());
             }
         });
         topSongAdapter = new TopSongAdapter(getContext(),topSongModelList);

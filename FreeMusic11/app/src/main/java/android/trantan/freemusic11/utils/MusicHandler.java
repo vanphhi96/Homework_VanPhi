@@ -48,6 +48,10 @@ public class MusicHandler {
                         else if(response.code()==500){
                             Toast.makeText(context, "Not found", Toast.LENGTH_SHORT).show();
                         }
+                        else if(response.code()==401)
+                        {
+                            Toast.makeText(context, "401", Toast.LENGTH_SHORT).show();
+                        }
 
                     }
 

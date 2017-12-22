@@ -55,6 +55,8 @@ public class MainPlayerFragment extends Fragment {
     TextView tv_timeduration;
     TopSongModel topSongModel;
     public static final String TAG = MainPlayerFragment.class.toString();
+    public  boolean xetDK = true;
+    DowloadSongModel dowloadSongModel;
     public MainPlayerFragment() {
         // Required empty public constructor
     }
@@ -131,22 +133,133 @@ public class MainPlayerFragment extends Fragment {
                 ThinDownloadManager thinDownloadManager = new ThinDownloadManager();
                 thinDownloadManager.add(downloadRequest);
                 iv_dowload.setClickable(false);
+
             }
         });
+
+        iv_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(xetDK)
+                {
+                    int count = TopSongFragment.topSongModelList.size();
+                    for(int i=0; i<count; i++)
+                    {
+                        if(TopSongFragment.topSongModelList.get(i).equals(topSongModel)){
+                            if(i<count-1)
+                            {
+                                EventBus.getDefault().postSticky(new OnClickTopSongEvent(TopSongFragment.topSongModelList.get(i+1)));
+                                break;
+                            }
+                            else{
+                                EventBus.getDefault().postSticky(new OnClickTopSongEvent(TopSongFragment.topSongModelList.get(0)));
+                                break;
+                            }
+                        }
+                    }
+                }
+                else{
+                    int count = DowloadFragment.dowloadSongModelList.size();
+                    for (int i=0; i<count; i++)
+                    {
+                        if(DowloadFragment.dowloadSongModelList.get(i).equals(dowloadSongModel))
+                        {
+                            if(i<count-1)
+                            {
+                                EventBus.getDefault().postSticky(new OnClickFileDowloadEvent(DowloadFragment.dowloadSongModelList.get(i+1)));
+                                break;
+                            }
+                            else {
+                                EventBus.getDefault().postSticky(new OnClickFileDowloadEvent(DowloadFragment.dowloadSongModelList.get(0)));
+                                break;
+                            }
+
+                        }
+                    }
+                }
+
+
+            }
+        });
+
+        iv_previous.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(xetDK)
+                {
+                    int count = TopSongFragment.topSongModelList.size();
+                    for(int i=0; i<count; i++)
+                    {
+                        if(TopSongFragment.topSongModelList.get(i).equals(topSongModel)){
+                            if((MusicHandler.hybridMediaPlayer.getCurrentPosition()/1000)<5)
+                            {
+                               if(i==0)
+                               {
+                                   EventBus.getDefault().postSticky(new OnClickTopSongEvent(TopSongFragment.topSongModelList.get(count-1)));
+                                   break;
+                               }
+                               else {
+                                   EventBus.getDefault().postSticky(new OnClickTopSongEvent(TopSongFragment.topSongModelList.get(i-1)));
+                                   break;
+                               }
+                            }
+                            else{
+                                EventBus.getDefault().postSticky(new OnClickTopSongEvent(topSongModel));
+                                break;
+                            }
+
+                        }
+                    }
+
+                }
+                else {
+                    int count = DowloadFragment.dowloadSongModelList.size();
+                    for (int i=0; i<count; i++)
+                    {
+                        if(DowloadFragment.dowloadSongModelList.get(i).equals(dowloadSongModel))
+                        {
+                            if((MusicHandler.hybridMediaPlayer.getCurrentPosition()/1000)<5)
+                            {
+                                if(i==0)
+                                {
+                                    EventBus.getDefault().postSticky(new OnClickFileDowloadEvent(DowloadFragment.dowloadSongModelList.get(count-1)));
+                                    break;
+                                }
+                                else {
+                                    EventBus.getDefault().postSticky(new OnClickFileDowloadEvent(DowloadFragment.dowloadSongModelList.get(i-1)));
+                                    break;
+                                }
+                            }
+                            else {
+                                EventBus.getDefault().postSticky(new OnClickFileDowloadEvent(dowloadSongModel));
+                            }
+
+
+                        }
+                    }
+                }
+            }
+        });
+
+
         return view;
     }
     @Subscribe(sticky = true)
     public void onMiniPlayerClick(OnClickTopSongEvent onClickTopSongEvent)
     {
+        xetDK = true;
         topSongModel = onClickTopSongEvent.topSongModel;
         tv_song.setText(topSongModel.song);
         tv_singer.setText(topSongModel.singer);
         Picasso.with(getContext()).load(topSongModel.largeImage).transform(new CropCircleTransformation()).into(iv_song);
         MusicHandler.updateUIRealtime(seekBar,fb_main,iv_song,tv_timecuren,tv_timeduration);
+
     }
     @Subscribe(sticky = true)
     public void onMiniPlayerClickDowLoad(OnClickFileDowloadEvent onClickFileDowloadEvent)
     {
+        xetDK = false;
+        dowloadSongModel = onClickFileDowloadEvent.dowloadSongModel;
         tv_song.setText(onClickFileDowloadEvent.dowloadSongModel.song);
         tv_singer.setText(onClickFileDowloadEvent.dowloadSongModel.singer);
         //Picasso.with(getContext()).load(R.raw.genre_x2_22).transform(new CropCircleTransformation()).into(iv_song);

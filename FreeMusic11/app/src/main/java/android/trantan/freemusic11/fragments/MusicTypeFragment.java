@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.trantan.freemusic11.adapter.DatabaseHandler;
 import android.trantan.freemusic11.adapter.MusicTypeAdapter;
 import android.trantan.freemusic11.database.MusicTypeModel;
 import android.trantan.freemusic11.networks.MusicInterface;
@@ -62,8 +63,14 @@ public class MusicTypeFragment extends Fragment {
         rvMusicType.setLayoutManager(gridLayoutManager);
         rvMusicType.setItemAnimator(new SlideInUpAnimator());
         rvMusicType.getItemAnimator().setAddDuration(300);
-        loadData();
-
+        if(DatabaseHandler.getMusicTypeModels().size()==0)
+        {
+            loadData();
+        }
+        else {
+            musicTypeModelList.addAll(DatabaseHandler.getMusicTypeModels());
+            musicTypeAdapter.notifyDataSetChanged();
+        }
         return view;
     }
     private void loadData()
@@ -82,6 +89,7 @@ public class MusicTypeFragment extends Fragment {
                    musicTypeModel.imageID = context.getResources().getIdentifier("genre_x2_"+musicTypeModel.id,"raw",
                            context.getPackageName());
                     musicTypeModelList.add(musicTypeModel);
+                    DatabaseHandler.addMusicType(musicTypeModel);
                 }
                 musicTypeAdapter.notifyDataSetChanged();
             }

@@ -43,8 +43,8 @@ public class Utils {
     }
     public static String convertTime(long time)
     {
-        long min =time/600000;
-        long sec =(time-min*10000)/1000;
+        long min = time/60000;
+        long sec = (time - min*60000) / 1000;
         return String.format("%02d:%02d",min,sec);
     }
     public static List<DowloadSongModel> getPathFile() {
